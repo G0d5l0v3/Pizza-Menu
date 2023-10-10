@@ -56,7 +56,7 @@ const pizzaData = [
 
 //Logic to print pizza in a card with the image, ingredients and it's cost
 const printPizza = pizzaData.map((pizza, index) => (
-  <div key={index} className="flex gap-2">
+  <div key={index} className={`flex gap-2 ${pizza.soldOut && "opacity-50" }`}>
     <img src={pizza.photoName} alt="pizzaImage" className="w-20 h-20 " />
     <div className="grid gap-1">
       <h1 className="text-sm font-bold"> {pizza.name} </h1>
@@ -64,6 +64,7 @@ const printPizza = pizzaData.map((pizza, index) => (
         <em>{pizza.ingredients}</em>
       </p>
       <p className="text-sm">${pizza.price}</p>
+      <span className="text-sm text-[red] font-bold">{pizza.soldOut && "Sold Out"}</span>
     </div>
   </div>
 ));
@@ -108,7 +109,7 @@ function Menu() {
 
   return (
     <React.Fragment>
-      <p className="font-[inter] text-center text-sm pt-[3rem]">
+      <p className="font-[inter] text-center text-sm pt-[2rem]">
         {" "}
         Authentic Italian cusine. 5 creative dishes to choose from. All from our
         stone oven, all organic, all delicious
@@ -148,7 +149,7 @@ function OpenOrder() {
   );
 }
 
-// Footer component that renders a component based on conditions for workin hourskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkn,i if true or false
+// Footer component that renders a component based on conditions for workin hours if true or false
 function Footer() {
   return (
     <React.Fragment>
