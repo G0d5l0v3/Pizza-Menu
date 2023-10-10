@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import pizza1 from "../src/assets/images/pizza-1.jpg";
@@ -7,7 +7,7 @@ import pizza3 from "../src/assets/images/pizza-3.jpg";
 import pizza4 from "../src/assets/images/pizza-4.jpg";
 import pizza5 from "../src/assets/images/pizza-5.jpg";
 
-//Pizza Data 
+//Pizza Data
 const pizzaData = [
   {
     name: "Foccaci",
@@ -108,12 +108,19 @@ function Menu() {
 
   return (
     <React.Fragment>
-      { pizzaAvailable ? (
+      <p className="font-[inter] text-center text-sm pt-[3rem]">
+        {" "}
+        Authentic Italian cusine. 5 creative dishes to choose from. All from our
+        stone oven, all organic, all delicious
+      </p>
+      {pizzaAvailable ? (
         <div className="grid grid-cols-2 w-full place-items-center gap-6 font-[inter] pt-[2rem]">
           {printPizza}
         </div>
       ) : (
-        <div className="font-[inter] text-center text-sm pt-[3rem]">There are no available Pizza's</div>
+        <div className="font-[inter] text-center text-sm pt-[3rem]">
+          There are no available Pizza's
+        </div>
       )}
     </React.Fragment>
   );
@@ -141,7 +148,7 @@ function OpenOrder() {
   );
 }
 
-// Footer component that renders a component based on conditions for workin hours if true or false
+// Footer component that renders a component based on conditions for workin hourskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkn,i if true or false
 function Footer() {
   return (
     <React.Fragment>
