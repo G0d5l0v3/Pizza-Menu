@@ -13,30 +13,35 @@ const pizzaData = [
     ingredients: "peppers, onions, sausage",
     photoName: pizza1,
     price: 15,
+    soldOut: false,
   },
   {
     name: "Pepperoni",
     ingredients: "peppers, onions, sausage",
     photoName: pizza2,
     price: 13,
+    soldOut: true,
   },
   {
     name: "Pizza Spinaci",
     ingredients: "peppers, onions, sausage",
     photoName: pizza3,
     price: 12,
+    soldOut: false,
   },
   {
     name: "Pizza Margherita",
     ingredients: "peppers, onions, sausage",
     photoName: pizza4,
     price: 10,
+    soldOut: false,
   },
   {
     name: "Pizza Funghi",
     ingredients: "peppers, onions, sausage",
     photoName: pizza5,
     price: 12,
+    soldOut: true,
   },
 
   {
@@ -44,6 +49,7 @@ const pizzaData = [
     ingredients: "peppers, onions, sausage",
     photoName: pizza1,
     price: 12,
+    soldOut: false,
   },
 ];
 
@@ -77,7 +83,7 @@ function App() {
 
 function Header() {
   return (
-    <Fragment>
+    <React.Fragment>
       <div className="flex items-center flex-col gap-4 pt-[2rem]">
         <h1 className="text-center text-[#f0b03a] text-2xl font-[inter]">
           _FAST REACT PIZZA_
@@ -86,38 +92,58 @@ function Header() {
           OUR MENU
         </p>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 }
 
 function Menu() {
+  const pizza = pizzaData;
+  const numPizza = pizza.length;
   return (
-    <Fragment>
-      <div className="grid grid-cols-2 w-full place-items-center gap-6 font-[inter] pt-[2rem]">
-        {printPizza}
-      </div>
-    </Fragment>
+    <React.Fragment>
+      {numPizza > 0 ? (
+        <div className="grid grid-cols-2 w-full place-items-center gap-6 font-[inter] pt-[2rem]">
+          {printPizza}
+        </div>
+      ) : (
+        <div className="font-[inter] text-center text-sm pt-[3rem]">There are no available Pizza's</div>
+      )}
+    </React.Fragment>
+  );
+}
+
+function CloseOrder({ openHourValue, closeHourValue }) {
+  return (
+    <p className="font-[inter] text-center text-sm pt-[3rem]">
+      We are currently closed. Please reach out with the hours of{" "}
+      {openHourValue}am - {closeHourValue}pm
+    </p>
+  );
+}
+
+function OpenOrder() {
+  return (
+    <div className="grid place-items-center text-center gap-2 text-sm pt-[2rem]">
+      <p className="font-[inter] text-center ">
+        We are open. Feel free to order a pizza
+      </p>
+      <button className=" font-[inter] bg-[#f0b03a] w-20 h-7">Order</button>
+    </div>
   );
 }
 
 function Footer() {
   return (
-    <Fragment>
+    <React.Fragment>
       {isOpen ? (
-        <div className="grid place-items-center text-center gap-2 text-sm pt-[2rem]">
-        <p className="font-[inter] text-center ">
-          We are open. Feel free to order a pizza
-        </p>
-        <button className=" font-[inter] bg-[#f0b03a] w-20 h-7">Order</button>
-        </div>
+        <OpenOrder />
       ) : (
-        <p className="font-[inter] text-center text-sm pt-[3rem]">
-          We are currently closed. Please reach out with the hours of {openHour}am - {closeHour}pm
-        </p>
+        <CloseOrder openHourValue={openHour} closeHourValue={closeHour} />
       )}
-    </Fragment>
+    </React.Fragment>
   );
 }
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
