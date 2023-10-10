@@ -7,6 +7,7 @@ import pizza3 from "../src/assets/images/pizza-3.jpg";
 import pizza4 from "../src/assets/images/pizza-4.jpg";
 import pizza5 from "../src/assets/images/pizza-5.jpg";
 
+//Pizza Data 
 const pizzaData = [
   {
     name: "Foccaci",
@@ -53,6 +54,7 @@ const pizzaData = [
   },
 ];
 
+//Logic to print pizza in a card with the image, ingredients and it's cost
 const printPizza = pizzaData.map((pizza, index) => (
   <div key={index} className="flex gap-2">
     <img src={pizza.photoName} alt="pizzaImage" className="w-20 h-20 " />
@@ -66,6 +68,7 @@ const printPizza = pizzaData.map((pizza, index) => (
   </div>
 ));
 
+//Get work hours
 const time = new Date().getHours();
 const openHour = 8;
 const closeHour = 17;
@@ -81,6 +84,7 @@ function App() {
   );
 }
 
+//Header component
 function Header() {
   return (
     <React.Fragment>
@@ -96,12 +100,15 @@ function Header() {
   );
 }
 
+// Menu component with a condition to render different contents based on their result either true or false
 function Menu() {
   const pizza = pizzaData;
   const numPizza = pizza.length;
+  const pizzaAvailable = numPizza > 0;
+
   return (
     <React.Fragment>
-      {numPizza > 0 ? (
+      { pizzaAvailable ? (
         <div className="grid grid-cols-2 w-full place-items-center gap-6 font-[inter] pt-[2rem]">
           {printPizza}
         </div>
@@ -112,6 +119,7 @@ function Menu() {
   );
 }
 
+//Component for close of work with props values for the working hours to render message
 function CloseOrder({ openHourValue, closeHourValue }) {
   return (
     <p className="font-[inter] text-center text-sm pt-[3rem]">
@@ -121,6 +129,7 @@ function CloseOrder({ openHourValue, closeHourValue }) {
   );
 }
 
+//Component for working hours to render message
 function OpenOrder() {
   return (
     <div className="grid place-items-center text-center gap-2 text-sm pt-[2rem]">
@@ -132,6 +141,7 @@ function OpenOrder() {
   );
 }
 
+// Footer component that renders a component based on conditions for workin hours if true or false
 function Footer() {
   return (
     <React.Fragment>
