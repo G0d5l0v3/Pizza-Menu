@@ -131,8 +131,8 @@ function Menu() {
 function CloseOrder({ openHourValue, closeHourValue }) {
   return (
     <p className="font-[inter] text-center text-sm pt-[3rem]">
-      We are currently closed. Please reach out with the hours of{" "}
-      {openHourValue}am - {closeHourValue}pm
+      We are currently closed. Please reach out within the hours of{" "}
+      {openHourValue}:00 - {closeHourValue}:00
     </p>
   );
 }
